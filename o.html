@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        a=0
+        function tmp(){
+            setTimeout(()=>{
+                a=1
+            },1000)
+        }
+        tmp()
+
+        document.addEventListener('click',(e)=>{
+            console.log(a)
+        })
+    </script>
+</body>
+</html>

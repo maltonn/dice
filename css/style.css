@@ -1,0 +1,79 @@
+#nav{
+    background-color: #3498db;
+}
+#main_title{
+    color:white;
+}
+#get_btn {/*円の部分*/
+    position: fixed;
+    bottom: 0;
+    right:0;
+    margin:8px;
+    width: 56px;/*幅*/
+    height: 56px;/*高さ*/
+    background: #03a9f4;/*背景色*/
+    text-align: center;/*中央寄せ*/
+    border-radius: 50%;/*角丸く*/
+    transition: .3s;/*滑らかな動きに*/
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);/*影*/
+    z-index: 10;
+}
+#settings_btn{
+    position: fixed;
+    margin: 16px;
+    top:0;
+    right:0;
+}
+#loader.bottom{
+    position: fixed;
+    bottom: 0;
+    right:0;
+    left:0;
+    width:60px;
+    margin:auto;
+    margin-bottom:16px;
+}
+#loader.center{
+    position: fixed;
+    top:0;
+    bottom: 0;
+    right:0;
+    left:0;
+    width:90px;
+    height:90px;
+    margin:auto;
+}
+
+#get_btn:hover {/*ホバー時の影*/
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.2);
+}
+
+#get_btn span {/*中央のアイコン*/
+  color: white;
+  line-height: 56px;/*＝幅と高さ*/
+  font-size: 18px;/*サイズ*/
+}
+
+/*
+#table{
+    position: absolute;
+    top:0;
+    left:0;
+}
+*/
+#animation{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background-color: black;
+    z-index: 1;
+    display: none;
+    transition-duration: 1s;
+}
+
+
+.pointer{
+    cursor: pointer;
+}
