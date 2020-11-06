@@ -13,15 +13,20 @@ def Main():
     if request.method == 'GET':
         return render_template('index.html')
 
-@app.route('/open')
+@app.route('/open/')
 def Open():
     if request.method == 'GET':
         return render_template('open/index.html')
 
-@app.route('/table')
+@app.route('/table/')
 def Table():
     if request.method == 'GET':
         return render_template('table/index.html')
+
+@app.route('/form/')
+def Form():
+    if request.method == 'GET':
+        return render_template('form/index.html')
 
 if __name__ == '__main__':
     app.run()

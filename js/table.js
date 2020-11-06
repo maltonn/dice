@@ -1,16 +1,22 @@
-params = {}
+params = {'sid':7}
 try {
     (decodeURI(location.href).split('?')[1]).split('&').forEach(e => params[e.split('=')[0]] = e.split('=')[1])
 } catch (e) {
     console.log(e)
 }
-
-if (!params['sid']) {
-    window.alert('Error : url must have a parametor : sid={int} ')
-}
-
 function randint(max) {
     return Math.floor(Math.random() * Math.floor(max));
+}
+
+function Dic2ParamString(obj) {
+    let str = "?";
+    for (var key in obj) {
+        if (str != "") {
+            str += "&";
+        }
+        str += key + "=" + encodeURIComponent(obj[key]);
+    }
+    return str
 }
 
 function Get(dic) {
@@ -61,16 +67,6 @@ function MakeTable(data) {
         }
         main_body.appendChild(tr)
     }
-}
-function Dic2ParamString(obj) {
-    let str = "?";
-    for (var key in obj) {
-        if (str != "") {
-            str += "&";
-        }
-        str += key + "=" + encodeURIComponent(obj[key]);
-    }
-    return str
 }
 
 Get(params)

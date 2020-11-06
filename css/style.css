@@ -4,10 +4,8 @@
 #main_title{
     color:white;
 }
-#get_btn {/*円の部分*/
+.circle-btn{/*円の部分*/
     position: fixed;
-    bottom: 0;
-    right:0;
     margin:8px;
     width: 56px;/*幅*/
     height: 56px;/*高さ*/
@@ -18,6 +16,11 @@
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);/*影*/
     z-index: 10;
 }
+#get_btn{
+    bottom: 0;
+    right:0;
+}
+
 #settings_btn{
     position: fixed;
     margin: 16px;
@@ -73,7 +76,17 @@
     transition-duration: 1s;
 }
 
-
 .pointer{
     cursor: pointer;
+}
+
+.none{
+    display: none;
+}
+
+
+@media(max-width:750px){
+    nav.uk-navbar-container ul.uk-navbar-nav{
+        display: none;
+    }
 }
