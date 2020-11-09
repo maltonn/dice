@@ -47,25 +47,35 @@
   
   <div id="loader" class="center" uk-spinner="ratio: 3"></div>
   <div id='now_number'></div>
-  <div id='animation'>
-    <div class="screen1">
-      <div class="outer_circle"></div>
-      <div class="inner_circle1"></div>
+  <div id='animation' class='none'>
+    <div id='box'>
+        <div id='box_main'></div>
+        <div id='box_border'></div>
     </div>
-    <div class="bars1">
-      <div class="bar1 bar1_1"></div>
-      <div class="bar1 bar1_2"></div>
-      <div class="bar1 bar1_3"></div>
+    <div id='first_screen'>
+        <!--triangles made by js-->
     </div>
-    <div class="bars2">
-      <div class="bar2 bar2_1"></div>
-      <div class="bar2 bar2_2"></div>
-      <div class="bar2 bar2_3"></div>
-      <div class="bar2 bar2_4">
-        <h1 id='element_h1'></h1>
-      </div>
+    <div id='second_screen'>
+        <div id='circle1' class='circle'></div>
+        <div id='circle2' class='circle'></div>
+        <div id='circle3' class='circle'></div>
+        <div id='circle4' class='circle'></div>
+        <div id='circle5' class='circle'></div>
+        <div id='circle6' class='circle'></div>
+        <div id='circle7' class='circle'>
+            <h1 id='element_h1'></h1>
+            <div id='stars'>
+                <img id='star1' class='star' src='../img/star.svg'>
+                <img id='star2' class='star' src='../img/star.svg'>
+                <img id='star3' class='star' src='../img/star.svg'>
+                <img id='star4' class='star' src='../img/star.svg'>
+                <!--
+                <img id='star5' class='star' src='../img/star.svg'>
+                -->
+            </div>
+        </div>
     </div>
-  </div>
+</div>
   <a id='get_btn' class="circle-btn pointer" href="#">
     <span uk-icon="icon: play; ratio: 2"></span>
   </a>
@@ -135,6 +145,7 @@
   <script src='../js/uikit.min.js'></script>
   <script src='../js/uikit-icons.min.js'></script>
   <script src='../js/open.js'></script>
+  <script src='../js/animation.js'></script>
 </body>
 
 </html>

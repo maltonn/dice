@@ -4,6 +4,14 @@ document.cookie.split(';').forEach(e => cookie[decodeURIComponent(e.split('=')[0
 */
 data = [{ 'elm': 'オフラインです','user':'0','degre':'0'}]
 
+data = [
+{ 'elm': '要素1','user':'0','degree':'1'},
+{ 'elm': '要素2','user':'1','degree':'2'},
+{ 'elm': '要素3','user':'Moscwa','degree':'3'},
+{ 'elm': '要素4','user':'example','degree':'4'},
+]
+
+
 Userid2Name={
     '0':'anymous ',
     '1':'みなりん ',
@@ -28,7 +36,6 @@ function Dic2ParamString(obj) {
 //はじめに要素をすべて取得
 function GetAll(dic) {
     dic['method'] = 'pick'
-    dic['user']='Moscwa'
     $(function () {
         $.ajax({
             url: 'https://sdyzrnc9i1.execute-api.us-east-2.amazonaws.com/default/light-api' + Dic2ParamString(dic),
@@ -50,20 +57,12 @@ function GetAll(dic) {
 }
 
 //アニメーション起動＆要素の追加
+black_triangles_flag=false
 function Lounch(data) {
-    animation.style.display = 'block'
-    setTimeout(() => {
-        animation.style.opacity = '0'
-        setTimeout(() => {
-            animation.style.display = 'none'
-            animation.style.opacity = '1'
-        }, 1000)
-    }, 4300)
-    tr = document.createElement('tr')
     while (true) {
         chosen = data[randint(data.length)]
         element=chosen['elm']
-        degree=chosen['degree']
+        degree=Number(chosen['degree'])
         if(chosen['user']){
             user=Userid2Name[chosen['user']]//user_idの場合
             if(!user){
@@ -85,6 +84,48 @@ function Lounch(data) {
             }
         }
     }
+    
+    stars=document.getElementsByClassName('star')
+    for(i=0;i<stars.length;i++){
+        if(i<degree){
+            stars[i].style.display='block'
+        }else{
+            stars[i].style.display='none'
+        }
+    }
+
+    box_col='#00FFDD'//水色 
+    timeout=7700
+
+    if(degree==3){
+        box_col='#ff9900'//金
+        timeout=8300
+    }
+    if(degree>=4){
+        timeout=8900
+        box_col='#884499'//紫
+        SetTriangles(['BB6588','CCAA87','8889CC','DDAACB'])
+        black_triangles_flag=true
+    }else{
+        if(black_triangles_flag){
+            SetTriangles(['33AAEE','EE6666','BBDE22','FFDB42'])
+            black_triangles_flag=false
+        }
+    }
+    
+    box_main.style.backgroundColor=box_col
+    box_border.style.border='3px solid '+box_col
+
+    animation.style.display = 'block'
+    setTimeout(() => {
+        animation.style.opacity = '0'
+        setTimeout(() => {
+            animation.style.display = 'none'
+            animation.style.opacity = '1'
+        }, 1000)
+    }, timeout)
+
+    tr = document.createElement('tr')
     element_h1.innerText = element
 
     td = document.createElement('td')
@@ -94,7 +135,7 @@ function Lounch(data) {
     td2.innerText = ('★'.repeat(degree)+'　'.repeat(5)).slice(0,5)
 
     td3 = document.createElement('td')
-    td3.innerText = user=='anymous'?user:'(hidden)'
+    td3.innerText = user=='anymous '?user:'(hidden)'
     td3.setAttribute('data-user',user)
     td3.classList.add('data-user')
     td3.addEventListener('click',function(){
