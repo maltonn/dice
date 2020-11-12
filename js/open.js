@@ -105,10 +105,16 @@ function Lounch(data) {
         timeout=8900
         box_col='#884499'//紫
         SetTriangles(['BB6588','CCAA87','8889CC','DDAACB'])
+        circle1.style.backgroundColor='#BB6588'
+        circle3.style.backgroundColor='#CCAA87'
+        circle5.style.backgroundColor='#8889CC'
         black_triangles_flag=true
     }else{
         if(black_triangles_flag){
             SetTriangles(['33AAEE','EE6666','BBDE22','FFDB42'])
+            circle1.style.backgroundColor='#33AAEE'
+            circle3.style.backgroundColor='#EE6666'
+            circle5.style.backgroundColor='#BBDE22'
             black_triangles_flag=false
         }
     }
