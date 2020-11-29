@@ -25,7 +25,13 @@ Userid2Name={
 //アニメーション起動＆要素の追加
 black_triangles_flag=false
 function Lounch(data) {
+    counter=0
     while (true) {
+        counter+=1
+        if(counter>1000){
+            window.alert('条件に合う要素が存在しません')
+            return
+        }
         chosen = data[randint(data.length)]
         element=chosen['elm']
         degree=Number(chosen['degree'])
@@ -41,11 +47,15 @@ function Lounch(data) {
             continue
         }
         if (!cookie[element]) {
-            cookie[element] = 1
-            break
+            if(degree<=3){
+                cookie[element] = 0
+                break
+            }else{
+                cookie[element] = -1
+            }
         } else {
             cookie[element] += 1
-            if (cookie[element] % 5 == 0) {
+            if (cookie[element] % (degree<=3?5:7) == 0) {
                 break
             }
         }
@@ -136,6 +146,7 @@ function Lounch(data) {
         document.cookie = encodeURIComponent(key.trim()) + '=' + cookie[key]
     }
     */
+   now_covered_number.innerText='（うち未開封'+(data.length-Object.keys(cookie).length)+'個）'
 }
 params = {'sid':7}
 try {
@@ -149,6 +160,7 @@ Send(params,CallBack)
 function CallBack(res){
     data = eval(res)
     now_number.innerText = '現在登録されている属性は' + data.length + '個です！'
+    now_covered_number.innerText='（うち未開封'+(data.length-Object.keys(cookie).length)+'個）'
 }
 
 //キーボードショートカット
@@ -174,6 +186,9 @@ document.addEventListener('keydown', (e) => {
 //ダイスを振る
 document.getElementById('get_btn').addEventListener('click', () => {
     Lounch(data)
+})
+document.getElementById('reload_btn').addEventListener('click', () => {
+    Send(params,CallBack)
 })
 
 //リフレッシュ

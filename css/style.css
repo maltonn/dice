@@ -20,6 +20,10 @@
     bottom: 0;
     right:0;
 }
+#reload_btn{
+    bottom: 0;
+    left:0;
+}
 
 #settings_btn{
     position: fixed;
@@ -47,15 +51,18 @@
     margin:auto;
 }
 
-#get_btn:hover {/*ホバー時の影*/
+#get_btn:hover,#reload_btn:hover {/*ホバー時の影*/
   box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.2);
 }
 
-#get_btn span {/*中央のアイコン*/
+#get_btn span,#reload_btn span {/*中央のアイコン*/
   color: white;
-  line-height: 56px;/*＝幅と高さ*/
-  font-size: 18px;/*サイズ*/
+  line-height: 48px;
+  font-size: 18px;
 }
+
+
+  
 
 /*
 #table{
