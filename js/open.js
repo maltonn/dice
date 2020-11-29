@@ -4,12 +4,14 @@ document.cookie.split(';').forEach(e => cookie[decodeURIComponent(e.split('=')[0
 */
 data = [{ 'elm': 'オフラインです','user':'0','degre':'0'}]
 
+/*
 data = [
-{ 'elm': '要素1','user':'0','degree':'1'},
-{ 'elm': '要素2','user':'1','degree':'2'},
-{ 'elm': '要素3','user':'Moscwa','degree':'3'},
-{ 'elm': '要素4','user':'example','degree':'4'},
+    { 'elm': '要素1','user':'0','degree':'1'},
+    { 'elm': '要素2','user':'1','degree':'2'},
+    { 'elm': '要素3','user':'Moscwa','degree':'3'},
+    { 'elm': '要素4','user':'example','degree':'4'},
 ]
+*/
 
 
 Userid2Name={
@@ -18,42 +20,6 @@ Userid2Name={
     '2':'Ruinvil ',
     '3':'Moscwa  ',
     '4':'酔月　 　'
-}
-
-function randint(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-}
-function Dic2ParamString(obj) {
-    let str = "?";
-    for (var key in obj) {
-        if (str != "") {
-            str += "&";
-        }
-        str += encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]);
-    }
-    return str
-}
-//はじめに要素をすべて取得
-function GetAll(dic) {
-    dic['method'] = 'pick'
-    $(function () {
-        $.ajax({
-            url: 'https://sdyzrnc9i1.execute-api.us-east-2.amazonaws.com/default/light-api' + Dic2ParamString(dic),
-            type: 'GET',
-            //data:JSON.stringify(dic),
-            contentType: 'application/json',
-        })
-            .done((res) => {
-                loader.style.display = 'none'
-                data = eval(res)
-                now_number.innerText = '現在登録されている属性は' + data.length + '個です！'
-            })
-            .fail((res) => {
-                //window.alert('通信に失敗しました')
-                loader.style.display = 'none'
-                console.log(res);
-            })
-    });
 }
 
 //アニメーション起動＆要素の追加
@@ -177,7 +143,13 @@ try {
 } catch (e) {
     console.log(e)
 }
-GetAll(params)
+
+params['method']='pick'
+Send(params,CallBack)
+function CallBack(res){
+    data = eval(res)
+    now_number.innerText = '現在登録されている属性は' + data.length + '個です！'
+}
 
 //キーボードショートカット
 document.addEventListener('keydown', (e) => {
@@ -210,7 +182,7 @@ function Refresh() {
     li = document.createElement('li')
     li.innerHTML = '<table  class="uk-table uk-table-striped"><tbody></tbody></table>'
     li.children[0].children[0].innerHTML = main_body.innerHTML
-    icons = li.getElementsByTagName('span')//close iconを消す
+    icons = [...li.getElementsByTagName('span')]//close iconを消す
     for (icon of icons) {
         icon.outerHTML = ''
     }
