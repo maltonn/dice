@@ -15,5 +15,5 @@ function SetTriangles(cols){
     }
 }
 
-cols=['33AAEE','EE6666','BBDE22','FFDB42']
+cols=['e1d0b4','bf5346','be87a6','bd8683','de9610','cba777','614983','949b34']
 SetTriangles(cols)
