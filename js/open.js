@@ -13,6 +13,7 @@ data = [
 ]
 */
 
+ng_warning=[]
 
 Userid2Name={
     '0':'anymous ',
@@ -35,6 +36,18 @@ function Lounch(data) {
         chosen = data[randint(data.length)]
         element=chosen['elm']
         degree=Number(chosen['degree'])
+
+        flag=false
+        for(i=0;i<ng_warning.length;i++){
+            if (chosen['warning'] && chosen['warning'].includes(ng_warning[i])){
+                flag=true
+                break
+            }
+        }
+        if(flag){
+            continue
+        }
+
         if(chosen['user']){
             user=Userid2Name[chosen['user']]//user_idの場合
             if(!user){
@@ -46,7 +59,7 @@ function Lounch(data) {
         if(! degree==undefined || !((max_deg==-1 || degree<=max_deg) && (min_deg==-1 || min_deg<=degree))){
             continue
         }
-        if (!cookie[element]) {
+        if (cookie[element]==undefined) {
             if(degree<=3){
                 cookie[element] = 0
                 break
@@ -98,7 +111,7 @@ function Lounch(data) {
     box_main.style.backgroundColor=box_col
     box_border.style.border='3px solid '+box_col
 
-    animation.style.display = 'block'
+    //animation.style.display = 'block'
     setTimeout(() => {
         animation.style.opacity = '0'
         setTimeout(() => {
