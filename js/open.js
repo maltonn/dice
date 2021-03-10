@@ -111,7 +111,7 @@ function Lounch(data) {
     box_main.style.backgroundColor=box_col
     box_border.style.border='3px solid '+box_col
 
-    //animation.style.display = 'block'
+    animation.style.display = 'block'
     setTimeout(() => {
         animation.style.opacity = '0'
         setTimeout(() => {
